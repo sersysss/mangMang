@@ -16,14 +16,11 @@ import java.util.Map;
 @Controller
 public class UserController {
 
-    private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
-
     @Autowired
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping("/")
     public String greeting(Model model) {
 

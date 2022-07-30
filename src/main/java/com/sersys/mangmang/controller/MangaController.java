@@ -13,12 +13,8 @@ import java.util.List;
 @Controller
 public class MangaController {
 
-    private final MangaService mangaService;
-
     @Autowired
-    public MangaController(MangaService mangaService) {
-        this.mangaService = mangaService;
-    }
+    private MangaService mangaService;
 
     @GetMapping("/mangaList")
     @PreAuthorize("hasAuthority(Role.USER.name())")

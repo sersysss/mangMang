@@ -33,10 +33,6 @@ public class User implements UserDetails {
     @Column
     private boolean isActive;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column
-    private Status status;
-
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
