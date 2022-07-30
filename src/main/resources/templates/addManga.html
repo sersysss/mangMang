@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add manga</title>
+</head>
+<body>
+<form action="#" th:action="@{/addManga}" th:object="${manga}" method="post">
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="name">
+    <label for="url">URL</label>
+    <input type="text" th:field="*{url}" id="url" placeholder="url">
+    <input type="submit" value="Add Manga">
+</form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html
+        lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MangaManager</title>
+    <link rel="stylesheet" href="/static/mangaStyle.css">
+</head>
+<body>
+
+<div class="header">
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+<div class="sidebar-left">Left</div>
+
+<div class="main"> Main
+
+    <div class="container_mang">
+        <div th:switch="${mangas}">
+            <h2 th:case="null">No mangas found!</h2>
+            <div th:case="*">
+                <table class="table" border="1">
+                    <title>Mangas List</title>
+                    <thead>
+
+                    <thead>
+                    <tbody>
+                    <tr th:each ="manga : ${mangas}">
+                        <td><a th:href="${manga.url}"><p th:utext="${manga.name}"/></a></td>
+                        <td><a th:href="@{manga-delete/{id}(id=${manga.id})}">Remove</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn">
+        Add manga
+    </div>
+        <div class="container_add_mang">
+            <form action="#" th:action="@{/}" th:object="${manga}" method="post">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name" placeholder="name">
+                <br>
+                <label for="url">URL</label>
+                <input type="text" th:field="*{url}" id="url" placeholder="url">
+                <br>
+                <input type="submit" value="Save Manga">
+            </form>
+        </div>
+
+</div>
+
+<div class="sidebar-right">Right</div>
+
+<div class="footer">Footer</div>
+
+</body>
+<script>
+    document.querySelector(".btn").addEventListener("click", headerClick);
+    function headerClick() {
+        this.nextElementSibling.classList.toggle("spoiler");
+    }
+    /*document.querySelectorAll("[data-name='cont']").forEach(function(item) {
+        item.addEventListener("click", headerClick); });
+
+    function headerClick() {
+        this.nextElementSibling.classList.toggle("spoiler");
+    }*/
+</script>
+</html>

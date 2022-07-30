@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MangaManager Registration</title>
+</head>
+<body>
+REGISTRATION
+<br>
+<p th:if="${message != null}">
+    User exist!
+</p>
+<form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+    <label for="login">Login</label>
+    <input type="text" th:field="*{login}" id="login" placeholder="login">
+    <br>
+    <label for="email">Email</label>
+    <input type="email" th:field="*{email}" id="email" placeholder="email">
+    <br>
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password" placeholder="password">
+    <br>
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>
