@@ -14,8 +14,8 @@ Login page
     You have been logged out.
 </div>
 <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-    <label for="login">Login</label>
-    <input type="text" th:field="*{login}" id="login" placeholder="login">
+    <label for="username">Username</label>
+    <input type="text" th:field="*{username}" id="username" placeholder="username">
     <br>
     <label for="password">Password</label>
     <input type="password" th:field="*{password}" id="password" placeholder="password">
