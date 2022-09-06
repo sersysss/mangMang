@@ -3,26 +3,23 @@
         lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
 >
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MangaManager</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Manga List</title>
     <link rel="stylesheet" th:href="@{/mangaStyle.css}" href="../../mangaStyle.css" />
 </head>
 <body>
 
 <div class="header">
-    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
-    </form>
+
 </div>
 
 <div class="sidebar-left">Left</div>
 
-<div class="main"> Main
+<div class="main">
 
-    <div class="container_mang">
+    <div class="table">
         <div th:switch="${mangas}">
             <h2 th:case="null">No mangas found!</h2>
             <div th:case="*">
@@ -34,7 +31,7 @@
                     <tbody>
                     <tr th:each ="manga : ${mangas}">
                         <td><a th:href="${manga.url}"><p th:utext="${manga.name}"/></a></td>
-                        <td><a th:href="@{manga-delete/{id}(id=${manga.id})}">Remove</a></td>
+                        <td><a th:href="@{mangaList/manga-delete/{id}(id=${manga.id})}">Remove</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -42,11 +39,11 @@
         </div>
     </div>
 
-    <div class="btn">
+    <!--<div class="btn">
         Add manga
     </div>
         <div class="container_add_mang">
-            <form action="#" th:action="@{/}" th:object="${manga}" method="post">
+            <form action="#" th:action="@{/mangaList}" th:object="${manga}" method="post">
                 <label for="name">Name</label>
                 <input type="text" th:field="*{name}" id="name" placeholder="name">
                 <br>
@@ -55,13 +52,15 @@
                 <br>
                 <input type="submit" value="Save Manga">
             </form>
-        </div>
+        </div>-->
 
 </div>
 
 <div class="sidebar-right">Right</div>
 
-<div class="footer">Footer</div>
+<div class="footer">Footer
+    <a href="#popup">ADD Manga</a>
+</div>
 
 </body>
 <script>

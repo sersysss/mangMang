@@ -1,0 +1,78 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" th:href="@{/styles/nav.css}"/>
+</head>
+<body>
+
+<div id="footer" th:fragment="foot">
+
+</div>
+
+<div th:fragment="myheader">
+  <header class="header">
+    <div class="header__container">
+      <a href="" class="header__logo"></a>
+      <div class="header__menu menu">
+        <div class="menu__icon">
+          <span></span>
+        </div>
+        <nav class="menu__body">
+          <ul class="menu__list">
+            <li><a data-goto=".page__section_1" href="#" class="menu__link">Раздел №1</a></li>
+            <li><a data-goto=".page__section_2" href="#" class="menu__link">Раздел №2</a></li>
+            <li><a data-goto=".page__section_3" href="#" class="menu__link">Раздел №3</a></li>
+            <li>
+              <a href="" class="menu__link">Страница №1</a>
+              <span class="menu__arrow"></span>
+              <ul class="menu__sub-list">
+                <li>
+                <a href="" class="menu__sub-link">Раздел страницы №1</a>
+                </li>
+                <li>
+                  <a href="" class="menu__sub-link">Раздел страницы №2</a>
+                </li>
+                <li>
+                  <a href="" class="menu__sub-link">Раздел страницы №3</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="" class="menu__link">Страница №2</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div id="navbar" th:fragment="navbar">
+
+
+  <a href="#popup">ADD Manga</a>
+
+  <div id="popup" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <a href="#" class="popup__close">X</a>
+        <div class="popup__title">ADD MANGA</div>
+        <div class="popup__form"></div>
+        <form action="#" th:action="@{/mangaList}" th:object="${manga}" method="post">
+          <label for="name">Name</label>
+          <input type="text" th:field="*{name}" id="name" placeholder="name">
+          <br>
+          <label for="url">URL</label>
+          <input type="text" th:field="*{url}" id="url" placeholder="url">
+          <br>
+          <input type="submit" value="Save Manga">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

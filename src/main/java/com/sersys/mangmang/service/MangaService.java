@@ -1,6 +1,7 @@
 package com.sersys.mangmang.service;
 
 import com.sersys.mangmang.entity.Manga;
+import com.sersys.mangmang.entity.User;
 import com.sersys.mangmang.repository.MangaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +20,8 @@ public class MangaService {
         this.mangaRepository = mangaRepository;
     }
 
-    public Manga findById(Long id) {
-
-        Optional<Manga> optional = mangaRepository.findById(id);
-
-        return optional.orElseThrow(() -> new EntityNotFoundException("id"));
-    }
-
-    public List<Manga> findAll() {
-        return mangaRepository.findAll();
+    public List<Manga> findAllByUser(User user) {
+        return mangaRepository.findAllByUser(user);
     }
 
     public void saveManga(Manga manga) {
